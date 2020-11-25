@@ -1,4 +1,5 @@
 import * as util from "../../../util/util";
+import * as test from "../../../util/test";
 import chalk from "chalk";
 import * as LOGUTIL from "../../../util/log";
 const { log, logGrid, logSolution, trace } = LOGUTIL;
@@ -8,71 +9,38 @@ const DAY = 1;
 const DEBUG = true;
 LOGUTIL.setDebug(DEBUG);
 
-// solution path: /Users/trevorsg/t-hugs/advent-of-code/years/2016/01/index.ts
-// data path    : /Users/trevorsg/t-hugs/advent-of-code/years/2016/01/data.txt
+// solution path: /Users/dmarcey/code/advent-of-code/years/2016/01/index.ts
+// data path    : /Users/dmarcey/code/advent-of-code/years/2016/01/data.txt
 // problem url  : https://adventofcode.com/2016/day/1
 
 async function p2016day1_part1(input: string) {
-	let x = 0;
-	let y = 0;
-	let dir = 0;
-	const instructions = input.split(", ");
-	for (const instruction of instructions) {
-		dir = Number(util.mod(dir + (instruction[0] === "R" ? 1 : -1), 4));
-		let dist = parseInt(instruction.slice(1), 10);
-		if (dir === 0) {
-			y -= dist;
-		}
-		if (dir === 1) {
-			x += dist;
-		}
-		if (dir === 2) {
-			y += dist;
-		}
-		if (dir === 3) {
-			x -= dist;
-		}
-	}
-	log(`x: ${x}, y: ${y}`);
-	return Math.abs(x) + Math.abs(y);
+	return "Not implemented";
 }
 
-async function p2016day1_part2(input: string, part1Solution: string) {
-	let x = 0;
-	let y = 0;
-	let dir = 0;
-	const instructions = input.split(", ");
-	const visited = new Set();
-	for (const instruction of instructions) {
-		dir = Number(util.mod(dir + (instruction[0] === "R" ? 1 : -1), 4));
-		let dist = parseInt(instruction.slice(1), 10);
-		for (let i = 0; i < dist; ++i) {
-			if (dir === 0) {
-				y -= 1;
-			}
-			if (dir === 1) {
-				x += 1;
-			}
-			if (dir === 2) {
-				y += 1;
-			}
-			if (dir === 3) {
-				x -= 1;
-			}
-			const newLoc = `${x},${y}`;
-			if (visited.has(newLoc)) {
-				return Math.abs(x) + Math.abs(y);
-			}
-			visited.add(newLoc);
-		}
-	}
+async function p2016day1_part2(input: string) {
+	return "Not implemented";
 }
 
 async function run() {
-	const input = await util.getInput(DAY, YEAR);
+	const part1tests: TestCase[] = [];
+	const part2tests: TestCase[] = [];
 
+	// Run tests
+	test.beginTests()
+	test.beginSection();
+	for (const testCase of part1tests) {
+		test.logTestResult(testCase, String(await p2016day1_part1(testCase.input)));
+	}
+	test.beginSection();
+	for (const testCase of part2tests) {
+		test.logTestResult(testCase, String(await p2016day1_part2(testCase.input)));
+	}
+	test.endTests();
+
+	// Get input and run program
+	const input = await util.getInput(DAY, YEAR);
 	const part1Solution = String(await p2016day1_part1(input));
-	const part2Solution = String(await p2016day1_part2(input, part1Solution));
+	const part2Solution = String(await p2016day1_part2(input));
 
 	logSolution(part1Solution, part2Solution);
 }

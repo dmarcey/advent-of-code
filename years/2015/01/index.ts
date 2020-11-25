@@ -6,92 +6,24 @@ const { log, logGrid, logSolution, trace } = LOGUTIL;
 
 const YEAR = 2015;
 const DAY = 1;
-const DEBUG = false;
+const DEBUG = true;
 LOGUTIL.setDebug(DEBUG);
 
-// solution path: /Users/trevorsg/t-hugs/advent-of-code/years/2015/01/index.ts
-// data path    : /Users/trevorsg/t-hugs/advent-of-code/years/2015/01/data.txt
+// solution path: /Users/dmarcey/code/advent-of-code/years/2015/01/index.ts
+// data path    : /Users/dmarcey/code/advent-of-code/years/2015/01/data.txt
 // problem url  : https://adventofcode.com/2015/day/1
 
 async function p2015day1_part1(input: string) {
-	let lc = 0;
-	let rc = 0;
-	for (let i = 0; i < input.length; ++i) {
-		if (input[i] === "(") {
-			lc++
-		}
-		if (input[i] === ")") {
-			rc++;
-		}
-	}
-	return lc - rc;
+	return "Not implemented";
 }
 
 async function p2015day1_part2(input: string) {
-	let lc = 0;
-	let rc = 0;
-	for (let i = 0; i < input.length; ++i) {
-		if (input[i] === "(") {
-			lc++
-		}
-		if (input[i] === ")") {
-			rc++;
-		}
-		if (lc - rc < 0) {
-			return i + 1;
-		}
-	}
+	return "Not implemented";
 }
 
 async function run() {
-	const part1tests: TestCase[] = [
-		{
-			input: `(())`,
-			expected: `0`
-		},
-		{
-			input: `()()`,
-			expected: `0`
-		},
-		{
-			input: `(((`,
-			expected: `3`
-		},
-		{
-			input: `(()(()(`,
-			expected: `3`
-		},
-		{
-			input: `))(((((`,
-			expected: `3`
-		},
-		{
-			input: `())`,
-			expected: `-1`
-		},
-		{
-			input: `))(`,
-			expected: `-1`
-		},
-		{
-			input: `)))`,
-			expected: `-3`
-		},
-		{
-			input: `)())())`,
-			expected: `-3`
-		},
-	];
-	const part2tests: TestCase[] = [
-		{
-			input: `)`,
-			expected: `1`
-		},
-		{
-			input: `()())`,
-			expected: `5`
-		},
-	];
+	const part1tests: TestCase[] = [];
+	const part2tests: TestCase[] = [];
 
 	// Run tests
 	test.beginTests()

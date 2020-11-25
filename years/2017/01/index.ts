@@ -1,46 +1,46 @@
 import * as util from "../../../util/util";
+import * as test from "../../../util/test";
 import chalk from "chalk";
 import * as LOGUTIL from "../../../util/log";
 const { log, logGrid, logSolution, trace } = LOGUTIL;
 
 const YEAR = 2017;
 const DAY = 1;
-const DEBUG = false;
+const DEBUG = true;
 LOGUTIL.setDebug(DEBUG);
 
-// solution path: /Users/trevorsg/t-hugs/advent-of-code/years/2017/01/index.ts
-// data path    : /Users/trevorsg/t-hugs/advent-of-code/years/2017/01/data.txt
+// solution path: /Users/dmarcey/code/advent-of-code/years/2017/01/index.ts
+// data path    : /Users/dmarcey/code/advent-of-code/years/2017/01/data.txt
 // problem url  : https://adventofcode.com/2017/day/1
 
 async function p2017day1_part1(input: string) {
-	let sum = 0;
-	for (let i = 0; i < input.length; ++i) {
-		let dig = input[i];
-		let next = i === input.length - 1 ? input[0] : input[i + 1];
-		if (dig === next) {
-			sum += parseInt(dig, 10);
-		}
-	}
-	return sum;
+	return "Not implemented";
 }
 
-async function p2017day1_part2(input: string, part1Solution: string) {
-	let sum = 0;
-	for (let i = 0; i < input.length; ++i) {
-		let dig = input[i];
-		let next = input[(i + input.length / 2) % input.length];
-		if (dig === next) {
-			sum += parseInt(dig, 10);
-		}
-	}
-	return sum;
+async function p2017day1_part2(input: string) {
+	return "Not implemented";
 }
 
 async function run() {
-	const input = await util.getInput(DAY, YEAR);
+	const part1tests: TestCase[] = [];
+	const part2tests: TestCase[] = [];
 
+	// Run tests
+	test.beginTests()
+	test.beginSection();
+	for (const testCase of part1tests) {
+		test.logTestResult(testCase, String(await p2017day1_part1(testCase.input)));
+	}
+	test.beginSection();
+	for (const testCase of part2tests) {
+		test.logTestResult(testCase, String(await p2017day1_part2(testCase.input)));
+	}
+	test.endTests();
+
+	// Get input and run program
+	const input = await util.getInput(DAY, YEAR);
 	const part1Solution = String(await p2017day1_part1(input));
-	const part2Solution = String(await p2017day1_part2(input, part1Solution));
+	const part2Solution = String(await p2017day1_part2(input));
 
 	logSolution(part1Solution, part2Solution);
 }

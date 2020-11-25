@@ -1,32 +1,46 @@
 import * as util from "../../../util/util";
+import * as test from "../../../util/test";
 import chalk from "chalk";
 import * as LOGUTIL from "../../../util/log";
-// @ts-ignore
-import { runProgram } from "../intcode.js";
 const { log, logGrid, logSolution, trace } = LOGUTIL;
 
 const YEAR = 2019;
 const DAY = 23;
-const DEBUG = false;
+const DEBUG = true;
 LOGUTIL.setDebug(DEBUG);
 
-// solution path: /Users/trevorsg/t-hugs/advent-of-code/years/2019/23/index.ts
-// data path    : /Users/trevorsg/t-hugs/advent-of-code/years/2019/23/data.txt
+// solution path: /Users/dmarcey/code/advent-of-code/years/2019/23/index.ts
+// data path    : /Users/dmarcey/code/advent-of-code/years/2019/23/data.txt
 // problem url  : https://adventofcode.com/2019/day/23
 
 async function p2019day23_part1(input: string) {
 	return "Not implemented";
 }
 
-async function p2019day23_part2(input: string, part1Solution: string) {
+async function p2019day23_part2(input: string) {
 	return "Not implemented";
 }
 
 async function run() {
-	const input = await util.getInput(DAY, YEAR);
+	const part1tests: TestCase[] = [];
+	const part2tests: TestCase[] = [];
 
+	// Run tests
+	test.beginTests()
+	test.beginSection();
+	for (const testCase of part1tests) {
+		test.logTestResult(testCase, String(await p2019day23_part1(testCase.input)));
+	}
+	test.beginSection();
+	for (const testCase of part2tests) {
+		test.logTestResult(testCase, String(await p2019day23_part2(testCase.input)));
+	}
+	test.endTests();
+
+	// Get input and run program
+	const input = await util.getInput(DAY, YEAR);
 	const part1Solution = String(await p2019day23_part1(input));
-	const part2Solution = String(await p2019day23_part2(input, part1Solution));
+	const part2Solution = String(await p2019day23_part2(input));
 
 	logSolution(part1Solution, part2Solution);
 }
